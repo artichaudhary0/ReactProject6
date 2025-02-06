@@ -1,10 +1,11 @@
 import "./App.css";
-import ToDoApp from "./components/TodoApp";
+import Props from "./components/Props";
 
 function App() {
   return (
     <>
-      <ToDoApp />
+      <Props name="Arti Chaudhary" age={10} />
+      {/* <ToDoApp /> */}
     </>
   );
 }
