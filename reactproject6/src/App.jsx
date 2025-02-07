@@ -4,8 +4,17 @@ import Props from "./components/Props";
 function App() {
   return (
     <>
-      <Props name="Arti Chaudhary" age={10} />
-      {/* <ToDoApp /> */}
+      {/* child component */}
+      <Props
+        name="kuch bhi"
+        education="Btech"
+        colors={["red", "black", "blue", "white", "yellow"]}
+        userName={{
+          firstName: "Arti",
+          middleName: "Singh",
+          lastName: "Chaudhary",
+        }}
+      />
     </>
   );
 }

@@ -1,34 +1,55 @@
 /*
-Props : Properties. read only
-Js object
+  1 : Props :  Properties.
+  2 : Props : js Object.
+  3 : Read - only
+  4 : Immutable
+  5 : connection : parent(data pass) , child(access use)
 */
 
-function Props({ name = "", age = 0 }) {
+function Props({ name = "", education = "", colors = [] }) {
   /*
-    initial value
-    name = ''
-    age : 0
+  default values :
+  name = '' 
+  eduaction = ""
+  colors = []
+  userName = {}
 
-    After passing props :
-    name : "Arti chaudhary"
-    age : 10
+  override
   */
+
+  console.log(name);
+  console.log(education);
+  console.log(colors);
 
   return (
     <div>
       <h1>Name : {name}</h1>
-      <h1>Age : {age}</h1>
+      <h1>Education : {education}</h1>
+      <h1>Colors : {colors}</h1>
     </div>
   );
 }
 
 export default Props;
 
-// function Props({ name, age }) {
+// function Props({ name, education, colors, userName }) {
+//   // console.log(userName);
+//   // {firstName: 'Arti', middleName: 'Singh', lastName: 'Chaudhary'}
+
+//   const { firstName, middleName, lastName } = userName;
+//   console.log(firstName);
 //   return (
 //     <div>
-//       <h1>Name : {name}</h1>
-//       <h1>Age : {age}</h1>
+//       <h1>
+//         Name : {firstName} {middleName} {lastName}
+//       </h1>
+//       <h1>{education}</h1>
+//       <h1>{name}</h1>
+//       <ul>
+//         {colors.map((data, index) => (
+//           <li key={index}> {data} </li>
+//         ))}
+//       </ul>
 //     </div>
 //   );
 // }
@@ -36,19 +57,37 @@ export default Props;
 // export default Props;
 
 // function Props(props) {
-//   const { name, age } = props;
+//   //props = {name: 'kuch bhi', education: 'Pata nai'}
 
-//   //   console.log(props); // {name: 'Arti Chaudhary', age: 56473}
+//   const { name, education } = props;
 
-//   // {name: 'vsdvfsduv'}
 //   return (
 //     <div>
-//       <h1>Name : {name}</h1>
-//       <h1>Age : {age}</h1>
-//       {/* <h1>Name : {props["name"]} </h1>
-//       <h1>Age : {props["age"]} </h1> */}
+//       <h1>{education}</h1>
+//       <h1>{name}</h1>
+//       {/* <h1>{props.education}</h1>
+//       <h1>{props.name}</h1> */}
+//     </div>
+//   );
+// }
 
-//       {/* <h1>{name["name"]}</h1> */}
+// export default Props;
+
+// import React, { useState } from "react";
+
+// function Props(props) {
+//   // const [value, setValue] = useState(props.name);
+
+//   // const handleValue = () => {
+//   //   setValue("Changed value");
+//   // };
+
+//   // console.log(value);
+
+//   return (
+//     <div>
+//       <h1>{value}</h1>
+//       <button onClick={handleValue}>Change</button>
 //     </div>
 //   );
 // }
