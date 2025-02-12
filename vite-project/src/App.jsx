@@ -1,4 +1,6 @@
+import { useState } from "react";
 import "./App.css";
+import Cart from "./components/Ecommerce/Cart";
 import Products from "./components/Ecommerce/Products";
 
 function App() {
@@ -59,10 +61,48 @@ function App() {
     },
   ];
 
+  const [cartItems, setCartItems] = useState([]);
+
+  const onAddToCart = (product) => {
+    // []
+    // setCartItems((cI) => {
+    //   const isExisting = cI.find((i) => i.id === product.id);
+    //   if (isExisting) {
+    //     // true
+    //     return cI.map((i) =>
+    //       i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i
+    //     );
+    //   }
+    //   return [...cI, { ...product, quantity: 1 }];
+    // });
+
+    setCartItems((arti) => {
+      console.log(arti);
+      const exist = arti.find((item) => item.id === product.id);
+      // console.log(exist);
+
+      if (exist) {
+        return arti.map((item) => {
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item;
+        });
+      }
+      return [...arti, { ...product, quantity: 1 }];
+    });
+  };
+
   return (
-    <>
-      <Products product={products} />
-    </>
+    <div style={{ maxWidth: "100%" }}>
+      {products.map((product) => (
+        <Products
+          product={product}
+          onAddToCart={onAddToCart}
+          key={product.id}
+        />
+      ))}
+      <Cart items={cartItems} />
+    </div>
   );
 }
 
