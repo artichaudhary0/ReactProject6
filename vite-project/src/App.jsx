@@ -76,31 +76,32 @@ function App() {
     //   return [...cI, { ...product, quantity: 1 }];
     // });
 
-    setCartItems((arti) => {
-      console.log(arti);
-      const exist = arti.find((item) => item.id === product.id);
+    setCartItems((pref) => {
+      const exist = pref.find((item) => item.id === product.id);
       // console.log(exist);
 
       if (exist) {
-        return arti.map((item) => {
+        return pref.map((item) => {
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item;
         });
       }
-      return [...arti, { ...product, quantity: 1 }];
+      return [...pref, { ...product, quantity: 1 }];
     });
   };
 
   return (
     <div style={{ maxWidth: "100%" }}>
-      {products.map((product) => (
-        <Products
-          product={product}
-          onAddToCart={onAddToCart}
-          key={product.id}
-        />
-      ))}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+        {products.map((product) => (
+          <Products
+            key={product.id}
+            product={product}
+            onAddToCart={onAddToCart}
+          />
+        ))}
+      </div>
       <Cart items={cartItems} />
     </div>
   );

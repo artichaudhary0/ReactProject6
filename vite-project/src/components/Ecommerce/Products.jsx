@@ -27,7 +27,7 @@ function Products({ product, onAddToCart }) {
       <p style={{ color: "white" }}>${product.price}</p>
       <h3>{product.rating} ⭐</h3>
       <button
-        onClick={onAddToCart(product)}
+        onClick={() => onAddToCart(product)}
         style={{
           color: "white",
           padding: "10px",
