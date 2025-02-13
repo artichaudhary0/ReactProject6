@@ -1,6 +1,6 @@
 import React from "react";
 
-function Cart({ items, onRemove }) {
+function Cart({ items, onRemove, onCardRemove }) {
   const totalPrice = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -51,14 +51,13 @@ function Cart({ items, onRemove }) {
                 ${item.price}x{item.quantity}
               </p>
 
-              <button onClick={onRemove}>Remove</button>
-              <h3 style={{ color: "black" }}>
-                Total : ${totalPrice.toFixed(2)}
-              </h3>
+              <button onClick={() => onRemove(item.id)}>Remove</button>
+              <button onClick={() => onCardRemove(item.id)}>Card Remove</button>
             </div>
           </div>
         ))}
       </div>
+      <h3 style={{ color: "black" }}>Total : ${totalPrice.toFixed(2)}</h3>
     </div>
   );
 }
