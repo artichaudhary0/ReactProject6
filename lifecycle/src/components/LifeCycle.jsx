@@ -2,30 +2,51 @@ import React, { useEffect, useState } from "react";
 
 function LifeCycle() {
   const [count, setCount] = useState(0);
-  const [decrement, setDecrement] = useState(0);
+  const [text, setText] = useState("");
+  const [mountedTime, setMountedTime] = useState(null);
+
+  // component did mount (called when component is first mount)
 
   useEffect(() => {
-    console.log("every render");
-  });
-  useEffect(() => {
-    console.log("when mounted/created");
+    console.log("Component mounted");
+    setMountedTime(new Date().toLocaleTimeString());
+
+    return () => {
+      // called when component is unmounted
+      console.log("unmounted");
+    };
   }, []);
-  useEffect(() => {
-    console.log("when count value updated");
-  }, [count]);
 
-  useEffect(() => {
-    console.log("when decrement pressed value");
+  // every call
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setCount(count + 1);
+  //   }, 1000);
+  // });
 
-       
-  }, [decrement]);
+  // // only when component is mount
+  // useEffect(() => {
+  //   console.log("usdtfvusd");
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log("sathfu");
+  // }, [count]);
+
+  // useEffect(() => {
+  //   console.log("sdfhfhathfu");
+  // }, [count, text]);
+
+  // useEffect(() => {
+  //   console.log("cgfsathfu");
+  // }, [text]);
 
   return (
     <div>
       <h1>Count : {count}</h1>
       <button onClick={() => setCount(count + 1)}>Increment</button>
-      <h1>{"Value(Decrement) " + decrement}</h1>
-      <button onClick={() => setDecrement(decrement - 1)}>Decrement</button>
+      <h1>{text}</h1>
+      <input type="text" onChange={(e) => setText(e.target.value)} />
     </div>
   );
 }
