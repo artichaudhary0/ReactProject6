@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function LifeCycle() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState();
   const [text, setText] = useState("");
   const [mountedTime, setMountedTime] = useState(null);
 
