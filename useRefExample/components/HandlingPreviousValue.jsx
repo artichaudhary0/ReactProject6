@@ -12,7 +12,7 @@ function HandlingPreviousValue() {
   return (
     <div>
       <p>Value {count}</p>
-      <p>Prevvalue : {prevRef.current}</p>
+      <p>Prev-value : {prevRef.current}</p>
       <button onClick={() => setCount(count + 4)}>Increment by 4</button>
     </div>
   );

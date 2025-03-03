@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from "react";
 import "./App.css";
-import PreservevalueWithoutrerendering from "../components/PreservevalueWithoutrerendering";
-import HandlingPreviousValue from "../components/HandlingPreviousValue";
+
+import ClockFormat from "../components/ClockFormat";
 
 function App() {
-  return <HandlingPreviousValue />;
+  return <ClockFormat />;
 }
 
 export default App;
