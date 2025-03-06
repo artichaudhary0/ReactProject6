@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import ToggleTheme from "./components/ToggleTheme";
+import FruitList from "./components/FruitList";
 
 const styles = {
   lightTheme: {
@@ -60,7 +61,7 @@ function App() {
         {activeTab === "counter" && <div>Counter</div>}
         {activeTab === "shop" && <div>Shop</div>}
         {activeTab === "profile" && <div>user profile</div>}
-        {activeTab === "fruits" && <div>fruit list</div>}
+        {activeTab === "fruits" && <FruitList theme={theme} />}
       </main>
 
       <ToggleTheme theme={theme} toggleTheme={toggleTheme} />
