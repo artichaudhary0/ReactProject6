@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import ToggleTheme from "./components/ToggleTheme";
 import FruitList from "./components/FruitList";
+import Counter from "./components/Counter";
 
 const styles = {
   lightTheme: {
@@ -20,15 +21,22 @@ const styles = {
 };
 
 function App() {
-  const [theme, setTheme] = useState("darkTheme");
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme || "darkTheme";
+  });
   const [activeTab, setActiveTab] = useState("counter");
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "lightTheme" ? "darkTheme" : "lightTheme"));
+    setTheme((prev) => {
+      let newTheme = prev === "lightTheme" ? "darkTheme" : "lightTheme";
+      localStorage.setItem("theme", newTheme);
+      return newTheme;
+    });
   };
 
   useEffect(() => {
-    // styles.darkTheme
+    styles.darkTheme;
     document.body.style.backgroundColor = styles[theme].bg;
     document.body.style.color = styles[theme].text;
   }, [theme]);
@@ -45,7 +53,7 @@ function App() {
     <div style={contanerStyle}>
       <Header activeTab={activeTab} setActiveTab={setActiveTab} theme={theme} />
 
-      <main style={mainStyle}>
+      <main style={{}}>
         {activeTab === "home" && (
           <div>
             <h3>React components</h3>
@@ -58,7 +66,7 @@ function App() {
         )}
 
         {activeTab === "todos" && <div>Todo list</div>}
-        {activeTab === "counter" && <div>Counter</div>}
+        {activeTab === "counter" && <Counter />}
         {activeTab === "shop" && <div>Shop</div>}
         {activeTab === "profile" && <div>user profile</div>}
         {activeTab === "fruits" && <FruitList theme={theme} />}

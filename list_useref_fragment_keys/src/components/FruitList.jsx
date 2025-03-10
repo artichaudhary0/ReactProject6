@@ -82,40 +82,41 @@ const FruitList = ({ theme }) => {
           />
           <input
             type="number"
-            name="color"
+            name="quantity"
             value={newFruit.quantity}
             onChange={handleInputChange}
             min={1}
             placeholder="Color"
             required
           />
-        </div>
 
-        <div>
-          {fruits.length === 0 ? (
-            <p>No Fruitsin the list.</p>
-          ) : (
-            fruits.map((fruit) => (
-              <div key={fruit.id} style={fruitItemStyle}>
-                <div>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      width: "15px",
-                      height: "15px",
-                      backgroundColor: fruit.color,
-                      borderRadius: "50%",
-                    }}
-                  ></span>
-                  <strong>{fruit.name}</strong> - {fruit.quantity} in stock
-                </div>
-
-                <button onClick={() => deleteFruit(fruit.id)}>delete</button>
-              </div>
-            ))
-          )}
+          <button type="submit">Add</button>
         </div>
       </form>
+      <div>
+        {fruits.length === 0 ? (
+          <p>No Fruitsin the list.</p>
+        ) : (
+          fruits.map((fruit) => (
+            <div key={fruit.id} style={fruitItemStyle}>
+              <div>
+                <span
+                  style={{
+                    display: "inline-block",
+                    width: "15px",
+                    height: "15px",
+                    backgroundColor: fruit.color,
+                    borderRadius: "50%",
+                  }}
+                ></span>
+                <strong>{fruit.name}</strong> - {fruit.quantity} in stock
+              </div>
+
+              <button onClick={() => deleteFruit(fruit.id)}>delete</button>
+            </div>
+          ))
+        )}
+      </div>
     </Fragment>
   );
 };
