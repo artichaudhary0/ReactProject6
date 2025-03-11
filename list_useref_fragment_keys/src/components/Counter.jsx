@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 const Counter = () => {
   const [count, setCount] = useState(() => {
@@ -46,10 +46,33 @@ const Counter = () => {
   };
 
   return (
-    <div>
-      {count}
-      <button></button>
-    </div>
+    <Fragment>
+      <h2>Counter</h2>
+      <p>Useing UseState , UseEffects Hook</p>
+
+      <div>
+        <h1>{count}</h1>
+        <div>
+          <label>Increment Counter</label>
+          <input
+            type="number"
+            value={increment}
+            onChange={(e) => setIncrement(Number(e.target.value))}
+            min={1}
+            max={100}
+          />
+        </div>
+
+        <div>
+          <button onClick={() => setCount(count - increment)}>-</button>
+          <button onClick={() => setCount(count + increment)}>+</button>
+          <button onClick={handleRest}>Reset</button>
+        </div>
+        <button onClick={() => setAutoIncrement(!autoIncrement)}>
+          AutoIncrement
+        </button>
+      </div>
+    </Fragment>
   );
 };
 
